@@ -9,42 +9,56 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<noscript><style>
+  .cert-details, .tl-details { display: block !important; }
+  .cert-toggle { display: none; }
+  .typed-caret { display: none; }
+</style></noscript>
 </head>
 <body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
 <header class="site-header" id="top">
   <nav class="nav container">
     <a class="brand" href="#top">Hassan<span>.</span></a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact" class="nav-cta">Contact</a></li>
+      <li><a class="nav-link" href="#about">About</a></li>
+      <li><a class="nav-link" href="#experience">Experience</a></li>
+      <li><a class="nav-link" href="#skills">Skills</a></li>
+      <li><a class="nav-link" href="#certifications">Certifications</a></li>
+      <li><a class="nav-link nav-cta" href="#contact">Contact</a></li>
     </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 </header>
 
 <main>
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg" aria-hidden="true"><canvas id="heroParticles"></canvas></div>
     <div class="container hero-inner">
       <p class="hero-eyebrow">Portfolio</p>
       <h1>Hi, I&rsquo;m Hassan.<br><span class="accent">AI Engineering student</span><br>&amp; Data Analyst.</h1>
+      <p class="hero-typed"><span id="typedText">Data Analyst</span><span class="typed-caret" aria-hidden="true"></span></p>
       <p class="hero-sub">Master&rsquo;s student in Artificial Intelligence Engineering (LM) at the University of Modena and Reggio Emilia, Italy — and a data analyst turning business data into clear, decision-ready insight.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="mailto:hassan.developer033@gmail.com">Get in touch</a>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/hassan-bakhtiar-digital-marketing-specialist/" target="_blank" rel="noopener">LinkedIn profile</a>
       </div>
       <dl class="hero-stats">
-        <div><dt>Experience</dt><dd>4 roles</dd></div>
-        <div><dt>Certifications</dt><dd>7</dd></div>
-        <div><dt>English</dt><dd>IELTS 6.5</dd></div>
-        <div><dt>Currently</dt><dd>UNIMORE, Italy</dd></div>
+        <div><dt>Experience</dt><dd><span class="count" data-target="4" data-decimals="0">0</span> roles</dd></div>
+        <div><dt>Certifications</dt><dd><span class="count" data-target="7" data-decimals="0">0</span></dd></div>
+        <div><dt>English</dt><dd>IELTS <span class="count" data-target="6.5" data-decimals="1">0</span></dd></div>
+        <div><dt>Years of experience</dt><dd><span class="count" data-start-year="2021" data-decimals="0">0</span>+</dd></div>
       </dl>
     </div>
   </section>
@@ -58,27 +72,56 @@
       <div class="two-col">
         <div>
           <h3 class="subhead">Education</h3>
+          <p class="hint">Click any entry to expand it.</p>
           <ol class="timeline">
-            <li>
-              <span class="tl-date">2026 &ndash; present</span>
-              <strong>MSc Artificial Intelligence Engineering (LM)</strong>
-              <span>University of Modena and Reggio Emilia (UNIMORE), Modena, Italy</span>
-              <span class="tl-note">Coursework: Deep Learning Principles and Architectures</span>
+            <li class="tl-item">
+              <button class="tl-toggle" type="button" aria-expanded="false">
+                <span class="tl-head">
+                  <span class="tl-date">2026 &ndash; present</span>
+                  <strong>MSc Artificial Intelligence Engineering (LM)</strong>
+                </span>
+                <span class="tl-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="tl-details">
+                <span>University of Modena and Reggio Emilia (UNIMORE), Modena, Italy</span>
+                <span class="tl-note">Coursework: Deep Learning Principles and Architectures</span>
+              </div>
             </li>
-            <li>
-              <span class="tl-date">2023</span>
-              <strong>BSc Computer Science</strong>
-              <span>Federal Urdu University of Arts, Science &amp; Technology (FUUAST), Karachi, Pakistan</span>
+            <li class="tl-item">
+              <button class="tl-toggle" type="button" aria-expanded="false">
+                <span class="tl-head">
+                  <span class="tl-date">2023</span>
+                  <strong>BSc Computer Science</strong>
+                </span>
+                <span class="tl-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="tl-details">
+                <span>Federal Urdu University of Arts, Science &amp; Technology (FUUAST), Karachi, Pakistan</span>
+              </div>
             </li>
-            <li>
-              <span class="tl-date">2015 &ndash; 2016</span>
-              <strong>Intermediate (Pre-Engineering)</strong>
-              <span>Board of Intermediate Education Karachi, Pakistan</span>
+            <li class="tl-item">
+              <button class="tl-toggle" type="button" aria-expanded="false">
+                <span class="tl-head">
+                  <span class="tl-date">2015 &ndash; 2016</span>
+                  <strong>Intermediate (Pre-Engineering)</strong>
+                </span>
+                <span class="tl-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="tl-details">
+                <span>Board of Intermediate Education Karachi, Pakistan</span>
+              </div>
             </li>
-            <li>
-              <span class="tl-date">2013 &ndash; 2014</span>
-              <strong>GCE O Level</strong>
-              <span>Cambridge</span>
+            <li class="tl-item">
+              <button class="tl-toggle" type="button" aria-expanded="false">
+                <span class="tl-head">
+                  <span class="tl-date">2013 &ndash; 2014</span>
+                  <strong>GCE O Level</strong>
+                </span>
+                <span class="tl-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="tl-details">
+                <span>Cambridge</span>
+              </div>
             </li>
           </ol>
         </div>
@@ -102,32 +145,61 @@
     <div class="container">
       <h2 class="section-title">Experience</h2>
       <p class="section-lead">Selected professional work in data analysis and business intelligence.</p>
-      <div class="cards">
-        <article class="card">
-          <span class="card-date">Jan 2025 &ndash; Present</span>
-          <h3>Data Analyst</h3>
-          <p class="card-org">Millac Foods &middot; Karachi, Pakistan</p>
-          <p>Real-time business dashboards and reporting for a food company &mdash; tracking performance and giving teams a clear view of the business.</p>
-        </article>
-        <article class="card">
-          <span class="card-date">Feb &ndash; Dec 2024</span>
-          <h3>Business Intelligence Manager</h3>
-          <p class="card-org">Vareweb</p>
-          <p>Automated BI dashboards and funnel analysis &mdash; analysed data using GA4, Google Ads, Meta Ads Manager and GoHighLevel, tracking conversions and funnel performance.</p>
-        </article>
-        <article class="card">
-          <span class="card-date">Aug 2023 &ndash; 2024</span>
-          <h3>Data Analyst</h3>
-          <p class="card-org">Sybex Lab</p>
-          <p>Funnel and conversion analysis &mdash; turning user and sales data into actionable findings.</p>
-        </article>
-        <article class="card">
-          <span class="card-date">2021 &ndash; 2023</span>
-          <h3>Data Analyst Intern</h3>
-          <p class="card-org">GT Solutions USA</p>
-          <p>Data extraction and KPI tracking &mdash; collecting, cleaning and reporting data for decision-making.</p>
-        </article>
-      </div>
+      <p class="hint">Click any entry to expand it.</p>
+      <ol class="timeline timeline-exp">
+        <li class="tl-item">
+          <button class="tl-toggle" type="button" aria-expanded="false">
+            <span class="tl-head">
+              <span class="tl-date">Jan 2025 &ndash; Present</span>
+              <strong>Data Analyst</strong>
+              <span>Millac Foods &middot; Karachi, Pakistan</span>
+            </span>
+            <span class="tl-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="tl-details">
+            <p>Real-time business dashboards and reporting for a food company &mdash; tracking performance and giving teams a clear view of the business.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <button class="tl-toggle" type="button" aria-expanded="false">
+            <span class="tl-head">
+              <span class="tl-date">Feb &ndash; Dec 2024</span>
+              <strong>Business Intelligence Manager</strong>
+              <span>Vareweb</span>
+            </span>
+            <span class="tl-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="tl-details">
+            <p>Automated BI dashboards and funnel analysis &mdash; analysed data using GA4, Google Ads, Meta Ads Manager and GoHighLevel, tracking conversions and funnel performance.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <button class="tl-toggle" type="button" aria-expanded="false">
+            <span class="tl-head">
+              <span class="tl-date">Aug 2023 &ndash; 2024</span>
+              <strong>Data Analyst</strong>
+              <span>Sybex Lab</span>
+            </span>
+            <span class="tl-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="tl-details">
+            <p>Funnel and conversion analysis &mdash; turning user and sales data into actionable findings.</p>
+          </div>
+        </li>
+        <li class="tl-item">
+          <button class="tl-toggle" type="button" aria-expanded="false">
+            <span class="tl-head">
+              <span class="tl-date">2021 &ndash; 2023</span>
+              <strong>Data Analyst Intern</strong>
+              <span>GT Solutions USA</span>
+            </span>
+            <span class="tl-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="tl-details">
+            <p>Data extraction and KPI tracking &mdash; collecting, cleaning and reporting data for decision-making.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -136,34 +208,25 @@
     <div class="container">
       <h2 class="section-title">Skills</h2>
       <p class="section-lead">The tools I work with, grouped by what they do.</p>
-      <div class="skill-groups">
-        <div class="skill-group">
-          <h3>Data &amp; BI</h3>
-          <ul class="tags">
-            <li>Python</li>
-            <li>SQL</li>
-            <li>Power BI</li>
-            <li>Tableau</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Tools</h3>
-          <ul class="tags">
-            <li>GA4</li>
-            <li>Odoo ERP</li>
-            <li>n8n</li>
-            <li>REST APIs</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Analytics tools</h3>
-          <ul class="tags">
-            <li>Google Ads</li>
-            <li>Meta Ads Manager</li>
-          </ul>
-          <p class="skill-note">Used as analytics tools in my data work.</p>
-        </div>
+      <div class="filter-bar" role="group" aria-label="Filter skills">
+        <button class="filter-btn active" type="button" data-filter="all">All</button>
+        <button class="filter-btn" type="button" data-filter="data-bi">Data &amp; BI</button>
+        <button class="filter-btn" type="button" data-filter="tools">Tools</button>
+        <button class="filter-btn" type="button" data-filter="analytics">Analytics tools</button>
       </div>
+      <div class="skill-grid">
+        <article class="skill-card" data-cat="data-bi"><h3>Python</h3><p>Data &amp; BI</p></article>
+        <article class="skill-card" data-cat="data-bi"><h3>SQL</h3><p>Data &amp; BI</p></article>
+        <article class="skill-card" data-cat="data-bi"><h3>Power BI</h3><p>Data &amp; BI</p></article>
+        <article class="skill-card" data-cat="data-bi"><h3>Tableau</h3><p>Data &amp; BI</p></article>
+        <article class="skill-card" data-cat="tools"><h3>GA4</h3><p>Tools</p></article>
+        <article class="skill-card" data-cat="tools"><h3>Odoo ERP</h3><p>Tools</p></article>
+        <article class="skill-card" data-cat="tools"><h3>n8n</h3><p>Tools</p></article>
+        <article class="skill-card" data-cat="tools"><h3>REST APIs</h3><p>Tools</p></article>
+        <article class="skill-card" data-cat="analytics"><h3>Google Ads</h3><p>Analytics tools</p></article>
+        <article class="skill-card" data-cat="analytics"><h3>Meta Ads Manager</h3><p>Analytics tools</p></article>
+      </div>
+      <p class="skill-note">Used as analytics tools in my data work.</p>
     </div>
   </section>
 
@@ -171,57 +234,119 @@
   <section id="certifications" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Advanced Courses &amp; Certifications</h2>
-      <p class="section-lead">Every certificate below links to its real credential. Expired certifications are shown honestly.</p>
+      <p class="section-lead">Every certificate below links to its real credential. Expired certifications are shown honestly. Click a card&rsquo;s details to see its credential.</p>
+      <div class="filter-bar" role="group" aria-label="Filter certifications">
+        <button class="filter-btn active" type="button" data-cert-filter="all">All</button>
+        <button class="filter-btn" type="button" data-cert-filter="data">Data &amp; Analytics</button>
+        <button class="filter-btn" type="button" data-cert-filter="marketing">Marketing</button>
+        <button class="filter-btn" type="button" data-cert-filter="language">Language</button>
+      </div>
       <div class="cert-grid">
-        <article class="cert-card">
+        <article class="cert-card" data-cert-cat="language">
           <span class="cert-issuer">British Council</span>
           <h3>IELTS 6.5</h3>
           <p class="cert-date">27 April 2025</p>
           <p>English language test &mdash; overall band 6.5, above the B1 level.</p>
+          <button class="cert-toggle" type="button" aria-expanded="false">Show details</button>
+          <div class="cert-details">
+            <dl>
+              <div><dt>Issuer</dt><dd>British Council</dd></div>
+              <div><dt>Issued</dt><dd>27 April 2025</dd></div>
+              <div><dt>Score</dt><dd>Overall band 6.5 &mdash; above the B1 level</dd></div>
+            </dl>
+          </div>
         </article>
-        <article class="cert-card">
+        <article class="cert-card" data-cert-cat="marketing">
           <span class="cert-issuer">Google Digital Academy (Skillshop)</span>
           <h3>Google Ads Search Certification</h3>
           <p class="cert-date">February 2023 &middot; ID 140972747</p>
           <p>Google Search campaign fundamentals.</p>
           <p><span class="badge badge-expired">Expired 1 Feb 2024</span></p>
-          <a class="cert-link" href="https://skillshop.exceedlms.com/student/award/LCdSdNWVyTVVKT5S1RPw9t61" target="_blank" rel="noopener">Click here to verify &rarr;</a>
+          <button class="cert-toggle" type="button" aria-expanded="false">Show details</button>
+          <div class="cert-details">
+            <dl>
+              <div><dt>Issuer</dt><dd>Google Digital Academy (Skillshop)</dd></div>
+              <div><dt>Issued</dt><dd>February 2023</dd></div>
+              <div><dt>Credential ID</dt><dd>140972747</dd></div>
+              <div><dt>Status</dt><dd>Expired 1 Feb 2024</dd></div>
+              <div><dt>Verify</dt><dd><a class="cert-link" href="https://skillshop.exceedlms.com/student/award/LCdSdNWVyTVVKT5S1RPw9t61" target="_blank" rel="noopener">Click here to verify &rarr;</a></dd></div>
+            </dl>
+          </div>
         </article>
-        <article class="cert-card">
+        <article class="cert-card" data-cert-cat="marketing">
           <span class="cert-issuer">Semrush</span>
           <h3>PPC Automation</h3>
           <p class="cert-date">February 2023</p>
           <p>Pay-per-click automation, Semrush Academy.</p>
           <p><span class="badge badge-expired">Expired Feb 2024</span></p>
-          <a class="cert-link" href="https://static.semrush.com/academy/certificates/97afb28afb/hassan-bakhtiar_2.pdf" target="_blank" rel="noopener">Click here to view certificate &rarr;</a>
+          <button class="cert-toggle" type="button" aria-expanded="false">Show details</button>
+          <div class="cert-details">
+            <dl>
+              <div><dt>Issuer</dt><dd>Semrush</dd></div>
+              <div><dt>Issued</dt><dd>February 2023</dd></div>
+              <div><dt>Status</dt><dd>Expired Feb 2024</dd></div>
+              <div><dt>Certificate</dt><dd><a class="cert-link" href="https://static.semrush.com/academy/certificates/97afb28afb/hassan-bakhtiar_2.pdf" target="_blank" rel="noopener">Click here to view certificate &rarr;</a></dd></div>
+            </dl>
+          </div>
         </article>
-        <article class="cert-card">
+        <article class="cert-card" data-cert-cat="marketing">
           <span class="cert-issuer">FutureLearn</span>
           <h3>Digital Skills: Digital Marketing</h3>
           <p class="cert-date">January 2023</p>
           <p>Business and Management &mdash; digital marketing fundamentals.</p>
-          <a class="cert-link" href="https://www.futurelearn.com/certificates/ngqeof6" target="_blank" rel="noopener">Click here to verify &rarr;</a>
+          <button class="cert-toggle" type="button" aria-expanded="false">Show details</button>
+          <div class="cert-details">
+            <dl>
+              <div><dt>Issuer</dt><dd>FutureLearn</dd></div>
+              <div><dt>Issued</dt><dd>January 2023</dd></div>
+              <div><dt>Verify</dt><dd><a class="cert-link" href="https://www.futurelearn.com/certificates/ngqeof6" target="_blank" rel="noopener">Click here to verify &rarr;</a></dd></div>
+            </dl>
+          </div>
         </article>
-        <article class="cert-card">
+        <article class="cert-card" data-cert-cat="marketing">
           <span class="cert-issuer">Coursera &middot; Meta</span>
           <h3>Introduction to Social Media Marketing</h3>
           <p class="cert-date">July 2022</p>
           <p>Online non-credit course authorised by Meta, offered through Coursera.</p>
-          <a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/PP8V4CYJBAC4" target="_blank" rel="noopener">Click here to verify &rarr;</a>
+          <button class="cert-toggle" type="button" aria-expanded="false">Show details</button>
+          <div class="cert-details">
+            <dl>
+              <div><dt>Issuer</dt><dd>Coursera &middot; Meta</dd></div>
+              <div><dt>Issued</dt><dd>July 2022</dd></div>
+              <div><dt>Credential ID</dt><dd>PP8V4CYJBAC4</dd></div>
+              <div><dt>Verify</dt><dd><a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/PP8V4CYJBAC4" target="_blank" rel="noopener">Click here to verify &rarr;</a></dd></div>
+            </dl>
+          </div>
         </article>
-        <article class="cert-card">
+        <article class="cert-card" data-cert-cat="marketing">
           <span class="cert-issuer">Google</span>
           <h3>The Fundamentals of Digital Marketing</h3>
           <p class="cert-date">December 2019 &middot; Code WGV QLQ TLU</p>
           <p>Google Digital Garage &mdash; digital marketing fundamentals.</p>
-          <a class="cert-link" href="https://learndigital.withgoogle.com/digitalgarage/validate-certificate-code" target="_blank" rel="noopener">Click here to verify &rarr;</a>
+          <button class="cert-toggle" type="button" aria-expanded="false">Show details</button>
+          <div class="cert-details">
+            <dl>
+              <div><dt>Issuer</dt><dd>Google</dd></div>
+              <div><dt>Issued</dt><dd>December 2019</dd></div>
+              <div><dt>Certificate code</dt><dd>WGV QLQ TLU</dd></div>
+              <div><dt>Verify</dt><dd><a class="cert-link" href="https://learndigital.withgoogle.com/digitalgarage/validate-certificate-code" target="_blank" rel="noopener">Click here to verify &rarr;</a></dd></div>
+            </dl>
+          </div>
         </article>
-        <article class="cert-card cert-featured">
+        <article class="cert-card cert-featured" data-cert-cat="data">
           <span class="cert-issuer">Saylani Mass I.T. Training Programme</span>
           <h3>Certified Mobile and Web App Developer</h3>
           <p class="cert-date">10 April 2018 &middot; No. SMIT/2018/WMA/557</p>
           <p>Certified mobile and web app developer, Saylani Welfare International Trust.</p>
-          <a class="cert-link" href="https://drive.google.com/file/d/1CAXKC2CFmiXea7ExSWQJy2BCT9QHGMQy/view" target="_blank" rel="noopener">Click here to view certificate &rarr;</a>
+          <button class="cert-toggle" type="button" aria-expanded="false">Show details</button>
+          <div class="cert-details">
+            <dl>
+              <div><dt>Issuer</dt><dd>Saylani Mass I.T. Training Programme</dd></div>
+              <div><dt>Issued</dt><dd>10 April 2018</dd></div>
+              <div><dt>Certificate No.</dt><dd>SMIT/2018/WMA/557</dd></div>
+              <div><dt>Certificate</dt><dd><a class="cert-link" href="https://drive.google.com/file/d/1CAXKC2CFmiXea7ExSWQJy2BCT9QHGMQy/view" target="_blank" rel="noopener">Click here to view certificate &rarr;</a></dd></div>
+            </dl>
+          </div>
         </article>
       </div>
     </div>
@@ -234,6 +359,7 @@
       <p class="section-lead">For academic collaboration, data work, or just to say hello.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="mailto:hassan.developer033@gmail.com">hassan.developer033@gmail.com</a>
+        <button class="btn btn-ghost copy-btn" id="copyEmail" type="button" data-email="hassan.developer033@gmail.com">Copy email</button>
         <a class="btn btn-ghost" href="https://www.linkedin.com/in/hassan-bakhtiar-digital-marketing-specialist/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
@@ -252,6 +378,10 @@
     <p>&copy; 2026 Mohammad Hassan Bakhtiar Siddiqui</p>
   </div>
 </footer>
+
+<button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <script src="script.js"></script>
 </body>

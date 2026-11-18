@@ -343,3 +343,280 @@ a:hover { text-decoration: underline; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ============================================================
+   Interactive upgrade — scroll progress, theme toggle, typing
+   hero, counters, filters, expandable cards/timeline,
+   back-to-top, copy button. Same navy/teal theme.
+   ============================================================ */
+
+/* ---------- Scroll progress bar ---------- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--teal), #2dd4bf);
+  z-index: 100;
+}
+
+/* ---------- Nav: theme toggle + active link ---------- */
+.nav-right { display: flex; align-items: center; gap: 8px; }
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition: background 0.15s ease;
+}
+.theme-toggle:hover { background: var(--bg-alt); }
+.theme-toggle:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.theme-toggle svg { width: 18px; height: 18px; }
+.icon-sun { display: none; }
+
+.nav-links a.active { background: var(--bg-alt); color: var(--teal-dark); }
+
+/* ---------- Hero: typing line, animated gradient, particles ---------- */
+.hero {
+  background-size: 200% 200%;
+  animation: heroShift 18s ease-in-out infinite alternate;
+}
+@keyframes heroShift {
+  from { background-position: 0% 0%; }
+  to { background-position: 100% 100%; }
+}
+#heroParticles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-typed {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 700;
+  color: #2dd4bf;
+  margin: 0 0 16px;
+  min-height: 1.6em;
+}
+.typed-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: #2dd4bf;
+  margin-left: 3px;
+  vertical-align: text-bottom;
+  animation: caretBlink 0.9s steps(1) infinite;
+}
+@keyframes caretBlink { 50% { opacity: 0; } }
+
+.count { font-variant-numeric: tabular-nums; }
+
+/* ---------- Hint text ---------- */
+.hint { color: var(--muted); font-size: 0.9rem; margin: -24px 0 28px; }
+
+/* ---------- Filter buttons ---------- */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.filter-btn {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+}
+.filter-btn:hover { border-color: var(--teal); color: var(--teal-dark); transform: translateY(-1px); }
+.filter-btn.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+.filter-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+/* ---------- Skill cards ---------- */
+.skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.skill-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--teal);
+}
+.skill-card h3 { margin: 0 0 4px; font-family: var(--font-display); color: var(--navy); font-size: 1.05rem; }
+.skill-card p { margin: 0; color: var(--muted); font-size: 0.88rem; }
+.skill-note { color: var(--muted); font-size: 0.88rem; margin: 20px 0 0; }
+
+.is-hidden { display: none !important; }
+
+/* ---------- Expandable timeline (Education + Experience) ---------- */
+.tl-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+}
+.tl-toggle:focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; border-radius: 4px; }
+.tl-head { min-width: 0; }
+.tl-chevron {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  margin-top: 8px;
+  border-right: 2px solid var(--teal);
+  border-bottom: 2px solid var(--teal);
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+}
+.tl-item.expanded .tl-chevron { transform: rotate(225deg); }
+.tl-details { display: none; margin-top: 10px; }
+.tl-item.expanded .tl-details { display: block; animation: fadeSlide 0.3s ease; }
+.tl-details p { margin: 0 0 8px; color: #33465e; font-size: 0.95rem; }
+.tl-details p:last-child { margin-bottom: 0; }
+.timeline-exp { max-width: 720px; }
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Expandable certification cards ---------- */
+.cert-toggle {
+  margin-top: 12px;
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--teal-dark);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.cert-toggle:hover { border-color: var(--teal); background: var(--bg-alt); }
+.cert-toggle:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.cert-details { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); }
+.cert-card.expanded .cert-details { display: block; animation: fadeSlide 0.3s ease; }
+.cert-details dl { margin: 0; display: grid; gap: 8px; font-size: 0.92rem; }
+.cert-details dl div { display: grid; grid-template-columns: 118px 1fr; gap: 8px; }
+.cert-details dt { font-weight: 700; color: var(--navy); }
+.cert-details dd { margin: 0; color: var(--muted); }
+.cert-details .cert-link { margin-top: 0; }
+
+/* ---------- Back to top ---------- */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--navy);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 8px 20px rgba(11, 31, 58, 0.25);
+}
+.back-to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+.back-to-top:hover { background: var(--teal-dark); }
+.back-to-top svg { width: 18px; height: 18px; }
+.back-to-top:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+
+/* ---------- Copy email button ---------- */
+.copy-btn.copied { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+/* ============================================================
+   Dark theme — same navy/teal palette, inverted surfaces.
+   Default (light) is unchanged; toggled via [data-theme="dark"].
+   ============================================================ */
+[data-theme="dark"] {
+  --ink: #e6eef7;
+  --muted: #9fb4c9;
+  --bg: #0a1626;
+  --bg-alt: #0f2138;
+  --card: #10263f;
+  --border: #1e3a56;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .icon-sun { display: block; }
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="dark"] .site-header { background: rgba(10, 22, 38, 0.92); }
+[data-theme="dark"] .brand { color: #fff; }
+[data-theme="dark"] .theme-toggle { color: #eaf2f9; }
+[data-theme="dark"] .nav-toggle span { background: #eaf2f9; }
+[data-theme="dark"] .nav-links a.active { color: #2dd4bf; }
+[data-theme="dark"] .nav-cta { background: var(--teal); }
+[data-theme="dark"] .nav-cta:hover { background: var(--teal-dark); }
+[data-theme="dark"] a { color: #2dd4bf; }
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .subhead,
+[data-theme="dark"] .timeline strong,
+[data-theme="dark"] .cert-card h3,
+[data-theme="dark"] .skill-card h3,
+[data-theme="dark"] .facts li strong,
+[data-theme="dark"] .cert-details dt { color: #eaf2f9; }
+[data-theme="dark"] .tl-date,
+[data-theme="dark"] .cert-issuer { color: #2dd4bf; }
+[data-theme="dark"] .cert-card p,
+[data-theme="dark"] .tl-details p { color: #c3d2e0; }
+[data-theme="dark"] .timeline li::before { border-color: var(--bg); }
+[data-theme="dark"] .badge-expired { background: #453208; color: #fcd34d; }
+[data-theme="dark"] .contact .btn-ghost { border-color: #eaf2f9; color: #eaf2f9; }
+[data-theme="dark"] .contact .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); }
+[data-theme="dark"] .cert-toggle { color: #2dd4bf; }
+[data-theme="dark"] .filter-btn:hover { color: #2dd4bf; }
+
+/* ---------- Responsive additions ---------- */
+@media (max-width: 860px) {
+  .skill-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .skill-grid { grid-template-columns: 1fr; }
+  .nav-links {
+    background: var(--bg);
+  }
+  [data-theme="dark"] .nav-links { background: var(--bg); }
+  .cert-details dl div { grid-template-columns: 96px 1fr; }
+  .hero-typed { min-height: 1.5em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero { animation: none; }
+  .typed-caret { animation: none; }
+  .reveal { transition: none; }
+  .tl-item.expanded .tl-details,
+  .cert-card.expanded .cert-details { animation: none; }
+}
