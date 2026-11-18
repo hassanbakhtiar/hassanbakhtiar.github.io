@@ -408,6 +408,51 @@ a:hover { text-decoration: underline; }
   margin: 0 0 16px;
   min-height: 1.6em;
 }
+
+/* ---------- Hero: Erasmus badge ---------- */
+.hero-erasmus { margin: 0 0 14px; }
+.erasmus-badge {
+  display: inline-block;
+  padding: 7px 15px;
+  border: 1px solid rgba(45, 212, 191, 0.6);
+  border-radius: 999px;
+  background: rgba(14, 165, 165, 0.18);
+  color: #a7f3ea;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Education & Erasmus section ---------- */
+.erasmus-banner {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--teal);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+}
+.erasmus-banner h3 {
+  font-family: var(--font-display);
+  color: var(--navy);
+  margin: 6px 0 10px;
+  font-size: 1.35rem;
+}
+.erasmus-banner p { color: #33465e; margin: 0 0 14px; }
+.erasmus-banner p:last-child { margin-bottom: 0; }
+.erasmus-label {
+  font-size: 0.78rem !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal-dark) !important;
+  margin: 0 !important;
+}
+.erasmus-facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.erasmus-facts li { color: #33465e; font-size: 0.96rem; }
+.erasmus-facts li strong { color: var(--navy); }
+.erasmus-cv { margin: 32px 0 0; }
 .typed-caret {
   display: inline-block;
   width: 2px;
@@ -585,8 +630,14 @@ a:hover { text-decoration: underline; }
 [data-theme="dark"] .timeline strong,
 [data-theme="dark"] .cert-card h3,
 [data-theme="dark"] .skill-card h3,
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .erasmus-banner h3,
+[data-theme="dark"] .erasmus-facts li strong,
 [data-theme="dark"] .facts li strong,
 [data-theme="dark"] .cert-details dt { color: #eaf2f9; }
+[data-theme="dark"] .card p,
+[data-theme="dark"] .erasmus-banner p,
+[data-theme="dark"] .erasmus-facts li { color: #c3d2e0; }
 [data-theme="dark"] .tl-date,
 [data-theme="dark"] .cert-issuer { color: #2dd4bf; }
 [data-theme="dark"] .cert-card p,

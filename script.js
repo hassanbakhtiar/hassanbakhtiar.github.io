@@ -51,7 +51,7 @@
 
   /* ---------- Typing effect (hero) ---------- */
   var typedEl = document.getElementById('typedText');
-  var phrases = ['Data Analyst', 'AI Engineering Student', 'Business Intelligence'];
+  var phrases = ['Data Analyst', 'AI Engineering Student', 'Business Intelligence', 'Erasmus+ BIP Applicant'];
   if (typedEl) {
     if (reducedMotion) {
       typedEl.textContent = phrases[0];
