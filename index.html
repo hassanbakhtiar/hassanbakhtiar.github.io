@@ -28,6 +28,7 @@
       <li><a class="nav-link" href="#experience">Experience</a></li>
       <li><a class="nav-link" href="#skills">Skills</a></li>
       <li><a class="nav-link" href="#certifications">Certifications</a></li>
+      <li><a class="nav-link" href="#datalab">Data Lab</a></li>
       <li><a class="nav-link nav-cta" href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
@@ -406,6 +407,81 @@
     </div>
   </section>
 
+  <!-- DATA LAB -->
+  <section id="datalab" class="section">
+    <div class="container">
+      <h2 class="section-title">Data Lab</h2>
+      <p class="section-lead">A small corner of this site where you can watch a data analyst work — a real calculator from my freeCodeCamp certification, my certification journey as a chart, and my live GitHub activity. The calculator runs entirely in your browser; nothing you type leaves the page.</p>
+
+      <div class="lab-grid">
+        <article class="lab-panel lab-calculator">
+          <p class="lab-eyebrow">Try it live</p>
+          <h3>Mean&ndash;Variance&ndash;Standard Deviation Calculator</h3>
+          <p class="lab-note">The same calculation I built in Python for my <a href="https://www.freecodecamp.org/certification/fcc-0143708a-0ca3-40f9-aa7b-0d530c28ba22/data-analysis-with-python-v7" target="_blank" rel="noopener">freeCodeCamp Data Analysis with Python certification</a> — reimplemented here in JavaScript. The Python version is on <a href="https://github.com/hassanbakhtiar/boilerplate-mean-variance-standard-deviation-calculator" target="_blank" rel="noopener">GitHub</a>.</p>
+          <label class="lab-label" for="labInput">Enter numbers, separated by commas</label>
+          <div class="lab-input-row">
+            <input class="lab-input" id="labInput" type="text" inputmode="decimal" placeholder="e.g. 1, 2, 3, 4, 5" autocomplete="off" spellcheck="false">
+            <button class="btn btn-primary" id="labCalcBtn" type="button">Calculate</button>
+            <button class="filter-btn" id="labSampleBtn" type="button">Try sample data</button>
+            <button class="filter-btn" id="labClearBtn" type="button">Clear</button>
+          </div>
+          <p class="lab-msg" id="labMsg" role="status">Example: 1, 2, 3, 4, 5 &rarr; mean 3, variance 2, standard deviation 1.41.</p>
+          <noscript><p class="lab-msg">This calculator needs JavaScript. With JavaScript on, type any numbers above and the results appear instantly.</p></noscript>
+          <div class="lab-results" id="labResults" aria-live="polite">
+            <div class="lab-stat"><span class="lab-stat-label">Count</span><span class="lab-stat-value" id="labCount">&mdash;</span></div>
+            <div class="lab-stat"><span class="lab-stat-label">Mean</span><span class="lab-stat-value" id="labMean">&mdash;</span></div>
+            <div class="lab-stat"><span class="lab-stat-label">Variance (population)</span><span class="lab-stat-value" id="labVar">&mdash;</span></div>
+            <div class="lab-stat"><span class="lab-stat-label">Std deviation (population)</span><span class="lab-stat-value" id="labStd">&mdash;</span></div>
+            <div class="lab-stat"><span class="lab-stat-label">Minimum</span><span class="lab-stat-value" id="labMin">&mdash;</span></div>
+            <div class="lab-stat"><span class="lab-stat-label">Maximum</span><span class="lab-stat-value" id="labMax">&mdash;</span></div>
+          </div>
+          <div class="lab-bars" id="labBars" aria-hidden="true"></div>
+          <p class="lab-bars-note">Bars are scaled to the range of your numbers.</p>
+        </article>
+
+        <article class="lab-panel lab-chart-panel">
+          <p class="lab-eyebrow">My journey</p>
+          <h3>Certifications by year</h3>
+          <p class="lab-note">Eight certifications since 2018. Hover or click a bar — or use the arrow keys — to see that year&rsquo;s certificates.</p>
+          <div class="lab-chart-wrap">
+            <canvas id="labChart" width="640" height="300" tabindex="0" role="img" aria-label="Bar chart of certifications earned per year. Use the left and right arrow keys to explore years."></canvas>
+            <div class="lab-tooltip" id="labTooltip" aria-hidden="true"></div>
+          </div>
+          <noscript><p class="lab-msg">The chart needs JavaScript to draw — the full list of certificates by year is below.</p></noscript>
+          <div class="lab-year-detail" id="labYearDetail" aria-live="polite">
+            <p class="lab-year-title"><strong>2023</strong> &middot; 3 certifications</p>
+            <ul>
+              <li>Google Ads Search Certification &mdash; Google Digital Academy (Skillshop)</li>
+              <li>PPC Automation &mdash; Semrush</li>
+              <li>Digital Skills: Digital Marketing &mdash; FutureLearn</li>
+            </ul>
+          </div>
+          <details class="lab-year-list">
+            <summary>All certifications by year (plain text)</summary>
+            <ul>
+              <li><strong>2018</strong> &mdash; Certified Mobile and Web App Developer (Saylani Mass I.T. Training Programme)</li>
+              <li><strong>2019</strong> &mdash; The Fundamentals of Digital Marketing (Google)</li>
+              <li><strong>2022</strong> &mdash; Introduction to Social Media Marketing (Coursera &middot; Meta)</li>
+              <li><strong>2023</strong> &mdash; Google Ads Search Certification (Google Digital Academy); PPC Automation (Semrush); Digital Skills: Digital Marketing (FutureLearn)</li>
+              <li><strong>2025</strong> &mdash; IELTS 6.5 (British Council)</li>
+              <li><strong>2026</strong> &mdash; Data Analysis with Python Developer Certification (freeCodeCamp)</li>
+            </ul>
+          </details>
+        </article>
+
+        <article class="lab-panel lab-pulse-panel">
+          <p class="lab-eyebrow">Live from GitHub</p>
+          <h3>GitHub pulse</h3>
+          <p class="lab-note">Fetched live from GitHub&rsquo;s public API — nothing here is hard-coded.</p>
+          <div class="lab-pulse-body" id="labPulse">
+            <noscript><p class="lab-msg">Live GitHub data needs JavaScript. The profile is at <a href="https://github.com/hassanbakhtiar" target="_blank" rel="noopener">github.com/hassanbakhtiar</a>.</p></noscript>
+          </div>
+          <p class="lab-note"><a href="https://github.com/hassanbakhtiar" target="_blank" rel="noopener">github.com/hassanbakhtiar</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="section contact">
     <div class="container contact-inner">
@@ -428,6 +504,7 @@
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#certifications">Certifications</a>
+      <a href="#datalab">Data Lab</a>
       <a href="#contact">Contact</a>
     </nav>
     <p>&copy; 2026 Mohammad Hassan Bakhtiar Siddiqui</p>
