@@ -430,36 +430,6 @@ a:hover { text-decoration: underline; }
   min-height: 1.6em;
 }
 
-/* ---------- Images ---------- */
-.hero-visual { margin: 44px 0 0; }
-.hero-visual img,
-.section-figure img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-}
-.hero-visual img {
-  border: 1px solid rgba(45, 212, 191, 0.35);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-}
-.hero-visual figcaption {
-  margin-top: 12px;
-  font-size: 0.9rem;
-  color: #9fc3d4;
-  text-align: center;
-}
-.section-figure { margin: 36px 0 0; }
-.section-figure img {
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-.section-figure figcaption {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: var(--muted);
-  text-align: center;
-}
 .typed-caret {
   display: inline-block;
   width: 2px;
