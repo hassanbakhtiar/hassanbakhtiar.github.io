@@ -389,7 +389,7 @@
     { year: 2022, certs: ['Introduction to Social Media Marketing — Coursera · Meta'] },
     { year: 2023, certs: ['Google Ads Search Certification — Google Digital Academy (Skillshop)', 'PPC Automation — Semrush', 'Digital Skills: Digital Marketing — FutureLearn'] },
     { year: 2025, certs: ['IELTS 6.5 — British Council'] },
-    { year: 2026, certs: ['Data Analysis with Python Developer Certification — freeCodeCamp'] }
+    { year: 2026, certs: ['Data Science Foundations — KI-Campus', 'Data Analysis with Python Developer Certification — freeCodeCamp'] }
   ];
   var chartCanvas = document.getElementById('labChart');
   var chartTip = document.getElementById('labTooltip');
